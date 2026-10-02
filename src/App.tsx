@@ -8,7 +8,7 @@ import {
   Menu, X, ArrowRight, Sparkles, MessageSquare, Users, 
   Target, Calendar, CheckCircle2, ShieldCheck, Layers, 
   Send, Compass, Award, Lightbulb, Upload, Check, Image as ImageIcon, ExternalLink,
-  Zap, Activity, ChevronUp
+  Zap, Activity, ChevronUp, Quote
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -164,7 +164,7 @@ export default function App() {
           <div className="hidden lg:flex items-center gap-8 text-xs font-semibold tracking-wider text-white/75">
             <button onClick={() => scrollToSection('home')} className="hover:text-white transition-colors cursor-pointer">HOME</button>
             <button onClick={() => scrollToSection('about')} className="hover:text-white transition-colors cursor-pointer">ABOUT</button>
-            <button onClick={() => scrollToSection('process')} className="hover:text-white transition-colors cursor-pointer">ROADMAP</button>
+            <button onClick={() => scrollToSection('message')} className="hover:text-white transition-colors cursor-pointer">MY MESSAGE</button>
             <button onClick={() => scrollToSection('vision')} className="hover:text-white transition-colors cursor-pointer">VISION</button>
             <button onClick={() => scrollToSection('voice')} className="hover:text-white transition-colors cursor-pointer">STUDENT VOICE</button>
           </div>
@@ -201,7 +201,7 @@ export default function App() {
             >
               <button onClick={() => scrollToSection('home')} className="text-left py-2 border-b border-white/5 hover:text-[#0869E8] cursor-pointer">HOME</button>
               <button onClick={() => scrollToSection('about')} className="text-left py-2 border-b border-white/5 hover:text-[#0869E8] cursor-pointer">ABOUT</button>
-              <button onClick={() => scrollToSection('process')} className="text-left py-2 border-b border-white/5 hover:text-[#0869E8] cursor-pointer">ROADMAP</button>
+              <button onClick={() => scrollToSection('message')} className="text-left py-2 border-b border-white/5 hover:text-[#0869E8] cursor-pointer">MY MESSAGE</button>
               <button onClick={() => scrollToSection('vision')} className="text-left py-2 border-b border-white/5 hover:text-[#0869E8] cursor-pointer">VISION</button>
               <button onClick={() => scrollToSection('voice')} className="text-left py-2 hover:text-[#0869E8] cursor-pointer">STUDENT VOICE</button>
             </motion.div>
@@ -385,63 +385,118 @@ export default function App() {
       </section>
 
       {/* =================================================== */}
-      {/* 4. FROM IDEA TO EXECUTION (01–04 PROCESS CARDS)    */}
+      {/* 4. A MESSAGE FROM REVANSIDDHESWAR                   */}
       {/* =================================================== */}
-      <section id="process" className="py-24 px-6 md:px-12 relative z-10 border-t border-white/10">
-        <div className="max-w-7xl mx-auto">
+      <section id="message" className="py-24 px-6 md:px-12 relative z-10 border-t border-white/10">
+        <span id="process" className="sr-only" />
+        <div className="max-w-5xl mx-auto">
           
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0869E8]/10 border border-[#0869E8]/30 text-[11px] font-bold tracking-widest text-[#0869E8] uppercase mb-4">
-              <span>THE 4-STEP ROADMAP</span>
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0869E8]/10 border border-[#0869E8]/30 text-[11px] font-bold tracking-widest text-[#0869E8] uppercase mb-4">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>A MESSAGE FROM THE CANDIDATE</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-white">
-              FROM IDEA TO EXECUTION
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-tight">
+              HONEST LEADERSHIP.<br />REALISTIC RESPONSIBILITY.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { 
-                num: '01', 
-                title: 'IDEA', 
-                desc: '“Listen to student needs, suggestions and expectations before shaping the event.”' 
-              },
-              { 
-                num: '02', 
-                title: 'PLAN', 
-                desc: '“Turn student input into clear priorities, timelines and practical event plans.”' 
-              },
-              { 
-                num: '03', 
-                title: 'COORDINATE', 
-                desc: '“Work closely with student teams, volunteers and faculty to keep everyone connected.”' 
-              },
-              { 
-                num: '04', 
-                title: 'EXECUTE', 
-                desc: '“Deliver well-organized events with clear communication, participation and accountability.”' 
-              }
-            ].map((step, idx) => (
-              <div
-                key={idx}
-                className="group relative p-7 rounded-3xl bg-gradient-to-b from-white/[0.08] via-white/[0.03] to-white/[0.01] border border-white/15 backdrop-blur-xl hover:border-[#0869E8]/60 hover:bg-white/[0.06] shadow-[inset_0_1px_1px_rgba(255,255,255,0.18),0_15px_35px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_20px_40px_rgba(8,105,232,0.18)] transition-all duration-300 flex flex-col justify-between overflow-hidden"
-              >
-                {/* Refined gradient border line on top */}
-                <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#0869E8] to-transparent opacity-70 group-hover:opacity-100 transition-opacity" />
-                {/* Subtle glass glow orb in background of card */}
-                <div className="absolute -top-12 -right-12 w-28 h-28 bg-[#0869E8]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#0869E8]/20 transition-colors" />
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-3xl font-black text-[#0869E8] font-mono">{step.num}</span>
-                    <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 group-hover:border-[#0869E8]/30 transition-colors">
-                      Phase {step.num}
-                    </span>
-                  </div>
-                  <h4 className="text-xl font-extrabold text-white mb-3 tracking-wide group-hover:text-[#529bff] transition-colors">{step.title}</h4>
-                  <p className="text-xs text-[#EAF3FF]/80 leading-relaxed font-light">{step.desc}</p>
+          {/* Statement Glass Card */}
+          <div className="relative p-8 sm:p-12 md:p-14 rounded-3xl bg-gradient-to-b from-white/[0.08] via-white/[0.03] to-white/[0.01] border border-white/15 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden">
+            {/* Top decorative gradient line */}
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#0869E8] to-transparent opacity-80" />
+            <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#0869E8]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 space-y-8">
+              {/* Header Badge */}
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#0869E8]/20 border border-[#0869E8]/40 flex items-center justify-center text-[#529bff] shrink-0">
+                  <Quote className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-wide">
+                    Hey everyone, I'm Revansiddheswar
+                  </h3>
+                  <p className="text-xs sm:text-sm text-pink-300 font-semibold tracking-wider mt-0.5">
+                    Contesting for CSE Department President • PIXEL 2K26
+                  </p>
                 </div>
               </div>
-            ))}
+
+              {/* Candidate Statement Verbatim */}
+              <div className="space-y-6 text-[#EAF3FF]/90 text-base sm:text-lg md:text-xl leading-relaxed font-light">
+                <p>
+                  &ldquo;Hey everyone, I'm Revansiddheswar, and I'm contesting for CSE Department President.&rdquo;
+                </p>
+
+                <p>
+                  I know everyone has their own expectations from the person taking up this responsibility. Some of you might have concerns about the department, some might have suggestions, and some might just want better coordination and communication between students.
+                </p>
+
+                {/* Highlighted Core Message */}
+                <div className="p-6 sm:p-8 rounded-2xl bg-[#071426]/80 border border-[#0869E8]/30 shadow-inner">
+                  <p className="text-white font-medium text-lg sm:text-xl md:text-2xl leading-relaxed">
+                    &ldquo;We only have around one month, and a major part of the responsibility will be coordinating PIXELS. So I don't want to make a bunch of promises just because it's an election.&rdquo;
+                  </p>
+                </div>
+
+                <p>
+                  If I win, I want to focus on things that are actually possible to take up in that time, listen to students, represent their concerns, and make the most of the responsibility given to me.
+                </p>
+              </div>
+
+              {/* 3 Grounded Focus Pillars */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6 border-t border-white/10">
+                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#0869E8]/40 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-[#0869E8]/20 flex items-center justify-center text-[#529bff] mb-3">
+                    <Users className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-bold text-white text-sm mb-1">Listen &amp; Coordinate</h4>
+                  <p className="text-xs text-white/65 leading-relaxed">
+                    Bridging student concerns, suggestions, and communication directly across the department.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-pink-500/40 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-300 mb-3">
+                    <Calendar className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-bold text-white text-sm mb-1">Focused on PIXELS</h4>
+                  <p className="text-xs text-white/65 leading-relaxed">
+                    Centering our 1-month window on executing our flagship symposium with excellence.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-emerald-500/40 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-3">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                  <h4 className="font-bold text-white text-sm mb-1">Authentic Action</h4>
+                  <p className="text-xs text-white/65 leading-relaxed">
+                    No empty promises. Prioritizing what is genuinely achievable with total accountability.
+                  </p>
+                </div>
+              </div>
+
+              {/* Action Link to Share Input */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="text-xs text-white/60">
+                  Have a suggestion or concern to share?
+                </div>
+                <a
+                  href={GOOGLE_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleFormSubmitClick}
+                  className="px-6 py-3 rounded-full bg-[#0869E8]/20 hover:bg-[#0869E8]/35 text-[#529bff] hover:text-white border border-[#0869E8]/40 text-xs font-bold tracking-wider transition-all flex items-center gap-2"
+                >
+                  <span>SHARE YOUR INPUT DIRECTLY</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
+            </div>
           </div>
 
         </div>
@@ -656,7 +711,7 @@ export default function App() {
       <footer className="py-12 px-6 border-t border-white/10 relative z-10 text-center bg-[#040c17]">
         <div className="max-w-7xl mx-auto flex items-center justify-center">
           <p className="text-base md:text-lg font-bold text-[#0869E8] tracking-wider">
-            Designed by Darshan
+            Designed by Darshan, Ravendra, Revan
           </p>
         </div>
       </footer>
