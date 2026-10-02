@@ -712,7 +712,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto flex items-center justify-center">
           <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-wide sm:tracking-wider leading-snug">
             <span className="text-pink-400 drop-shadow-[0_0_15px_rgba(244,63,94,0.4)]">Designed by </span>
-            <span className="text-[#38bdf8] drop-shadow-[0_0_20px_rgba(56,189,248,0.5)]">Darshan, Ravendra, Revan</span>
+            <span className="text-[#38bdf8] drop-shadow-[0_0_20px_rgba(56,189,248,0.5)]">Darshan, Ravindra, Revan</span>
           </p>
         </div>
       </footer>
