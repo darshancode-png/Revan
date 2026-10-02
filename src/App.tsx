@@ -708,10 +708,11 @@ export default function App() {
       {/* =================================================== */}
       {/* 8. FOOTER                                          */}
       {/* =================================================== */}
-      <footer className="py-12 px-6 border-t border-white/10 relative z-10 text-center bg-[#040c17]">
+      <footer className="pt-20 pb-36 sm:pt-24 sm:pb-32 px-6 border-t border-white/10 relative z-10 text-center bg-[#040c17]">
         <div className="max-w-7xl mx-auto flex items-center justify-center">
-          <p className="text-base md:text-lg font-bold text-[#0869E8] tracking-wider">
-            Designed by Darshan, Ravendra, Revan
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-wide sm:tracking-wider leading-snug">
+            <span className="text-pink-400 drop-shadow-[0_0_15px_rgba(244,63,94,0.4)]">Designed by </span>
+            <span className="text-[#38bdf8] drop-shadow-[0_0_20px_rgba(56,189,248,0.5)]">Darshan, Ravendra, Revan</span>
           </p>
         </div>
       </footer>
