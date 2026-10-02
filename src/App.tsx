@@ -32,13 +32,25 @@ export default function App() {
   // Student Voice State
   const [submittedMessage, setSubmittedMessage] = useState(false);
 
-  // Candidate Photo State (Stored in localStorage)
+  // Candidate Photo State:
+  // 1. Checks user local upload if available
+  // 2. Otherwise defaults to bundled production candidate image
   const [heroImage, setHeroImage] = useState<string | null>(() => {
     try {
       return localStorage.getItem('pixel_hero_img');
     } catch {
       return null;
     }
+  });
+
+  const [imageSrc, setImageSrc] = useState<string>(() => {
+    try {
+      const local = localStorage.getItem('pixel_hero_img');
+      if (local) return local;
+    } catch {
+      // ignore
+    }
+    return "/candidate.jpg";
   });
 
   // Deterministic, memoized particle generation
@@ -72,6 +84,7 @@ export default function App() {
       reader.onloadend = () => {
         const result = reader.result as string;
         setHeroImage(result);
+        setImageSrc(result);
         try {
           localStorage.setItem('pixel_hero_img', result);
         } catch (err) {
@@ -276,34 +289,40 @@ export default function App() {
             {/* Subtle light/dark pink accent glow */}
             <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/15 via-rose-400/10 to-transparent rounded-2xl blur-2xl -z-10" />
             
-            <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden border border-pink-500/30 bg-[#071426] flex flex-col items-center justify-center">
-              {heroImage ? (
-                <>
-                  <img 
-                    src={heroImage} 
-                    alt="Revan Siddheshwar Candidate Portrait" 
-                    className="w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071426]/75 via-transparent to-transparent opacity-85 pointer-events-none" />
-                  <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-[#071426]/90 backdrop-blur-md border border-pink-500/20 pointer-events-none">
-                    <h3 className="font-bold text-white text-sm">Revan Siddheshwar</h3>
-                    <p className="text-[10px] text-pink-300 font-semibold tracking-wider mt-0.5">PIXEL 2K26 • CSE PRESIDENT CANDIDATE</p>
+            <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl overflow-hidden border border-pink-500/30 bg-[#071426] flex flex-col items-center justify-center group/card shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+              <img 
+                src={imageSrc} 
+                alt="Revan Siddheshwar Candidate Portrait" 
+                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover/card:scale-105"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (!target.src.endsWith('/candidate.svg')) {
+                    setImageSrc('/candidate.svg');
+                  }
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071426]/90 via-transparent to-transparent opacity-85 pointer-events-none" />
+              
+              {/* Official Candidate Badge Overlay */}
+              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-[#071426]/90 backdrop-blur-md border border-pink-500/25 pointer-events-none">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-bold text-white text-base tracking-wide">Revan Siddheshwar</h3>
+                    <p className="text-[11px] text-pink-300 font-semibold tracking-wider mt-0.5">PIXEL 2K26 • CSE PRESIDENT CANDIDATE</p>
                   </div>
-                </>
-              ) : (
-                <div className="p-8 text-center flex flex-col items-center justify-center h-full w-full bg-[#071426]">
-                  <div className="w-14 h-14 rounded-xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center mb-3 text-pink-300">
-                    <ImageIcon className="w-7 h-7" />
-                  </div>
-                  <h4 className="font-bold text-white text-sm mb-1">REVAN SIDDHESHWAR</h4>
-                  <p className="text-xs text-white/50 mb-5">Upload Candidate Photograph</p>
-                  <label className="px-5 py-2.5 rounded-lg bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold tracking-wider cursor-pointer shadow-md transition-all flex items-center gap-2">
-                    <Upload className="w-4 h-4" />
-                    <span>SELECT PHOTO</span>
-                    <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-                  </label>
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
                 </div>
-              )}
+              </div>
+
+              {/* Discreet Photo Selector for Owner */}
+              <label 
+                className="absolute top-4 right-4 p-2.5 rounded-xl bg-[#071426]/80 hover:bg-pink-600/90 text-white/70 hover:text-white border border-white/10 hover:border-pink-500/50 backdrop-blur-xl shadow-lg transition-all cursor-pointer opacity-0 group-hover/card:opacity-100 focus-within:opacity-100"
+                title="Change or test photo locally"
+              >
+                <Upload className="w-4 h-4" />
+                <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+              </label>
             </div>
           </motion.div>
 

@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1e36" />
+      <stop offset="60%" stop-color="#071426" />
+      <stop offset="100%" stop-color="#040b15" />
+    </linearGradient>
+
+    <!-- Subtle Pink Ambient Glow -->
+    <radialGradient id="pinkAmbient" cx="65%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#EC4899" stop-opacity="0.18" />
+      <stop offset="60%" stop-color="#0869E8" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#071426" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Skin Tone Gradients -->
+    <linearGradient id="skin" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#E8B594" />
+      <stop offset="60%" stop-color="#DB9F7C" />
+      <stop offset="100%" stop-color="#BF7F5C" />
+    </linearGradient>
+    <linearGradient id="skinShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#BF7F5C" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#9E5F3F" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Hair Gradient -->
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D2833" />
+      <stop offset="70%" stop-color="#18151D" />
+      <stop offset="100%" stop-color="#0E0D12" />
+    </linearGradient>
+
+    <!-- Suit Gradient (Deep Professional Navy) -->
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b283d" />
+      <stop offset="50%" stop-color="#0f1929" />
+      <stop offset="100%" stop-color="#080e18" />
+    </linearGradient>
+
+    <!-- Subtle Pink Tie Accent -->
+    <linearGradient id="tieGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E" />
+      <stop offset="100%" stop-color="#BE185D" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="url(#bgGrad)" />
+  <rect width="400" height="500" fill="url(#pinkAmbient)" />
+
+  <!-- Subtle High-Tech Grid Line Accents -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="100" x2="400" y2="100" stroke-dasharray="4,4" />
+    <line x1="0" y1="250" x2="400" y2="250" stroke-dasharray="4,4" />
+    <line x1="0" y1="400" x2="400" y2="400" stroke-dasharray="4,4" />
+    <line x1="100" y1="0" x2="100" y2="500" stroke-dasharray="4,4" />
+    <line x1="300" y1="0" x2="300" y2="500" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- Candidate Silhouette and Portrait -->
+  <g id="candidate">
+    <!-- Suit Body / Shoulders -->
+    <path d="M 60 500 L 90 380 L 140 330 L 165 345 L 200 375 L 235 345 L 260 330 L 310 380 L 340 500 Z" fill="url(#suitGrad)" />
+    
+    <!-- Lapels -->
+    <path d="M 140 330 L 175 435 L 200 460 L 225 435 L 260 330 L 235 330 L 200 395 L 165 330 Z" fill="#22334d" opacity="0.8" />
+    
+    <!-- White Collared Shirt -->
+    <polygon points="175,320 200,380 225,320 215,310 185,310" fill="#f8fafc" />
+
+    <!-- Subtle Pink Tie -->
+    <polygon points="196,340 204,340 208,450 200,465 192,450" fill="url(#tieGrad)" />
+    <polygon points="194,335 206,335 204,346 196,346" fill="#9D174D" />
+
+    <!-- Neck -->
+    <rect x="182" y="270" width="36" height="55" rx="10" fill="url(#skin)" />
+    <path d="M 182 285 Q 200 305 218 285 L 218 310 L 182 310 Z" fill="url(#skinShadow)" />
+
+    <!-- Head & Face -->
+    <path d="M 148 195 Q 148 290 200 290 Q 252 290 252 195 Q 252 135 200 135 Q 148 135 148 195 Z" fill="url(#skin)" />
+    
+    <!-- Ears -->
+    <ellipse cx="148" cy="205" rx="8" ry="16" fill="#DB9F7C" />
+    <ellipse cx="252" cy="205" rx="8" ry="16" fill="#DB9F7C" />
+
+    <!-- Hair -->
+    <path d="M 145 185 Q 142 120 190 115 Q 220 112 245 125 Q 258 140 255 185 Q 248 150 230 142 Q 200 135 165 155 Q 150 168 145 185 Z" fill="url(#hairGrad)" />
+    <!-- Hair Volume Styling -->
+    <path d="M 152 150 Q 185 120 240 128 Q 225 116 190 116 Q 165 118 152 150 Z" fill="#3D3645" opacity="0.6" />
+
+    <!-- Eyebrows -->
+    <path d="M 166 182 Q 178 178 190 182" stroke="#18151D" stroke-width="3" stroke-linecap="round" fill="none" />
+    <path d="M 210 182 Q 222 178 234 182" stroke="#18151D" stroke-width="3" stroke-linecap="round" fill="none" />
+
+    <!-- Eyes -->
+    <ellipse cx="178" cy="194" rx="5" ry="3.5" fill="#18151D" />
+    <ellipse cx="222" cy="194" rx="5" ry="3.5" fill="#18151D" />
+    <circle cx="179.5" cy="193" r="1.2" fill="#ffffff" />
+    <circle cx="223.5" cy="193" r="1.2" fill="#ffffff" />
+
+    <!-- Nose -->
+    <path d="M 197 195 L 202 218 L 195 221" stroke="#A86A48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+    <!-- Confident Warm Smile -->
+    <path d="M 183 240 Q 200 254 217 240" stroke="#7A3920" stroke-width="2.5" stroke-linecap="round" fill="none" />
+    <path d="M 186 241 Q 200 250 214 241" fill="#FFFFFF" opacity="0.9" />
+
+    <!-- Glasses (Smart modern dark frame) -->
+    <rect x="162" y="185" width="32" height="22" rx="5" stroke="#1E293B" stroke-width="2" fill="#FFFFFF" fill-opacity="0.05" />
+    <rect x="206" y="185" width="32" height="22" rx="5" stroke="#1E293B" stroke-width="2" fill="#FFFFFF" fill-opacity="0.05" />
+    <line x1="194" y1="193" x2="206" y2="193" stroke="#1E293B" stroke-width="2" />
+    <line x1="148" y1="192" x2="162" y2="192" stroke="#1E293B" stroke-width="1.5" />
+    <line x1="238" y1="192" x2="252" y2="192" stroke="#1E293B" stroke-width="1.5" />
+
+    <!-- Lapel Badge / Pin: PIXEL 2K26 (with subtle pink accent) -->
+    <rect x="135" y="385" width="22" height="10" rx="3" fill="#BE185D" />
+    <text x="146" y="392.5" fill="#FFFFFF" font-size="5" font-family="sans-serif" font-weight="bold" text-anchor="middle">CSE</text>
+  </g>
+
+  <!-- Clean Bottom Gradient Overlay to seamlessly blend with card footer -->
+  <rect y="440" width="400" height="60" fill="url(#bgGrad)" opacity="0.7" />
+</svg>
