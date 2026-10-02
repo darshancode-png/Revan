@@ -12,8 +12,11 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-// Configuration variable for remote response collection
+// Configuration variables
 const GOOGLE_FORM_URL = "https://forms.gle/EQ541SagmBDVja3XA";
+// Direct candidate photograph from provided Google Drive asset (lh3 CDN provides direct image streaming)
+const CANDIDATE_IMAGE_URL = "https://lh3.googleusercontent.com/d/1_4LZs4hU2We3SaEwgQ7sdEABO4nN40lK";
+const CANDIDATE_IMAGE_FALLBACK = "/candidate.jpg";
 
 interface Particle {
   id: number;
@@ -34,7 +37,7 @@ export default function App() {
 
   // Candidate Photo State:
   // 1. Checks user local upload if available
-  // 2. Otherwise defaults to bundled production candidate image
+  // 2. Otherwise defaults to direct Google Drive image / bundled candidate image
   const [heroImage, setHeroImage] = useState<string | null>(() => {
     try {
       return localStorage.getItem('pixel_hero_img');
@@ -50,7 +53,7 @@ export default function App() {
     } catch {
       // ignore
     }
-    return "/candidate.jpg";
+    return CANDIDATE_IMAGE_URL;
   });
 
   // Deterministic, memoized particle generation
@@ -293,16 +296,18 @@ export default function App() {
               <img 
                 src={imageSrc} 
                 alt="Revan Siddheshwar Candidate Portrait" 
-                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover/card:scale-105"
+                className="w-full h-full object-cover object-top sm:object-center rounded-2xl transition-transform duration-700 group-hover/card:scale-105"
                 referrerPolicy="no-referrer"
-                onError={(e) => {
-                  const target = e.currentTarget;
-                  if (!target.src.endsWith('/candidate.svg')) {
+                crossOrigin="anonymous"
+                onError={() => {
+                  if (imageSrc === CANDIDATE_IMAGE_URL) {
+                    setImageSrc(CANDIDATE_IMAGE_FALLBACK);
+                  } else if (imageSrc === CANDIDATE_IMAGE_FALLBACK) {
                     setImageSrc('/candidate.svg');
                   }
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071426]/90 via-transparent to-transparent opacity-85 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071426]/90 via-transparent to-transparent opacity-85 pointer-events-none rounded-2xl" />
               
               {/* Official Candidate Badge Overlay */}
               <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-[#071426]/90 backdrop-blur-md border border-pink-500/25 pointer-events-none">
